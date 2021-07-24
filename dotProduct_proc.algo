@@ -1,0 +1,32 @@
+PROCEDURE dot_product(v1,v2:vector,VAR result:FLOAT )
+BEGIN
+   result:=(v1.x*v2.x)+(v1.y*v2.y) 
+END
+
+ALGORITHM Dot product
+VAR
+
+ vector:	STRUCT
+                x :FLOAT;
+                y :FLOAT;
+            END_STRUCT 
+ n,i,j:INTEGER
+ ps:FLOAT
+ tab_vect: ARRAY_OF vector[2*n];
+
+BEGIN
+
+    FOR i FROM 0 TO tab_vect.length-1   DO
+        FOR j FROM 0 TO tab_vect.length-1  DO
+            IF (i<>j) THEN
+                dot_product(tab_vect[i],tab_vect[j],ps)
+                IF (ps=0) THEN
+                    Write("The two vectors ",tab_vect[i]," and ",tab_vect[j]," are orthogonal")
+                ELSE
+                    Write("The two vectors ",tab_vect[i]," and ",tab_vect[j]," are not orthogonal")
+                END_IF
+            END_IF
+        END_FOR
+    END_FOR
+     
+END
